@@ -1,0 +1,27 @@
+<div id="stock-lookup">
+  <h3>Search for Stocks</h3>
+  <%= form_tag search_stocks_path, remote: true, method: :get, id:'stock-lookup-form' do %>
+    <div class="form-group row no-padding text-center cold-md-12">
+      <div class="col-md-10">
+        <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true,
+                                                         class: "form-control search-box input-lg" %>
+      </div>
+      <div class="col-md-2">
+        <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Look up a Stock
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <%= render 'common/spinner' %>
+  <% if @stock %>
+    <div id="stock-lookup-results" class="well results-block">
+      <strong>Symbol:</strong><%= @stock.ticker %>
+      <strong>Name:</strong><%= @stock.name %>
+      <strong>Current Price:</strong><%= @stock.current_price %>
+      <strong>One Year Estimate:</strong><%= @stock.one_year_estimate %>
+      <strong>Percent Change:</strong><%= @stock.percent_change %>
+    </div>
+  <% end %>
+  <div id="stock-lookup-errors"></div>
+</div>
