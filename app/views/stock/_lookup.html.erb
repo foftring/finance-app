@@ -20,8 +20,8 @@
         <tr>
           <td><strong>Symbol:</strong><%= @stock.ticker %></td>
           <td><strong>Name:</strong><%= @stock.name %></td>
-          <td><strong>Current Price:</strong><%= @stock.current_price %></td>
-          <td><strong>One Year Estimate:</strong><%= @stock.one_year_estimate %></td>
+          <td><strong>Current Price:</strong> $<%= @stock.current_price %></td>
+          <td><strong>One Year Estimate:</strong> $<%= @stock.one_year_estimate %></td>
           <td><strong>Estimated Return:</strong><%= @stock.percent_change.round(4) * 100 %>%</td>
         </tr>
       </table>
