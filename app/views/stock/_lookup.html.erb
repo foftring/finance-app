@@ -16,11 +16,16 @@
   <%= render 'common/spinner' %>
   <% if @stock %>
     <div id="stock-lookup-results" class="well results-block">
-      <strong>Symbol:</strong><%= @stock.ticker %>
-      <strong>Name:</strong><%= @stock.name %>
-      <strong>Current Price:</strong><%= @stock.current_price %>
-      <strong>One Year Estimate:</strong><%= @stock.one_year_estimate %>
-      <strong>Percent Change:</strong><%= @stock.percent_change %>
+      <table class="table table-hover">
+        <tr>
+          <td><strong>Symbol:</strong><%= @stock.ticker %></td>
+          <td><strong>Name:</strong><%= @stock.name %></td>
+          <td><strong>Current Price:</strong><%= @stock.current_price %></td>
+          <td><strong>One Year Estimate:</strong><%= @stock.one_year_estimate %></td>
+          <td><strong>Estimated Return:</strong><%= @stock.percent_change.round(4) * 100 %>%</td>
+        </tr>
+      </table>
+
     </div>
   <% end %>
   <div id="stock-lookup-errors"></div>
