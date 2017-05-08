@@ -20,13 +20,13 @@
         <tr>
           <td><strong>Symbol:</strong><%= @stock.ticker %></td>
           <td><strong>Name:</strong><%= @stock.name %></td>
-          <td><strong>Current Price:</strong> $<%= @stock.current_price %></td>
+          <td><strong>Current Price:</strong> $<%= @stock.current_price.round(2) %></td>
           <td><strong>One Year Estimate:</strong> $<%= @stock.one_year_estimate %></td>
           <td><strong>Estimated Return:</strong><%= @stock.percent_change.round(4) * 100 %>%</td>
         </tr>
         <p>
           According to the median analyst estimate, you could earn <strong>$<%=
-          @stock.one_year_estimate - @stock.current_price %> per share</strong> if you bought it now <br>
+          (@stock.one_year_estimate - @stock.current_price).round(2) %> per share</strong> if you bought it now <br>
           with an estimated return over the next year of <strong><%= @stock.percent_change.round(4) * 100%>%</strong>
         </p>
       </table>
