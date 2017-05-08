@@ -6,7 +6,7 @@ class Stock < ApplicationRecord
 
   def self.new_stock_lookup(ticker)
     looked_up_stock = StockQuote::Stock.quote(ticker)
-    return nil if looked_up_stock.is_a?(StockQuote::NoDataForStockError)
+    return nil unless looked_up_stock.name
 
     new_stock = new(ticker:looked_up_stock.symbol,
                       name:looked_up_stock.name,
